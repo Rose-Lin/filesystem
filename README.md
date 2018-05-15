@@ -102,3 +102,4 @@ Writing to the file can be tested in test_open_dir.c, which writes data multiple
 - fseek() unitialized
 - We can only mount our disk at the root directory, and mounting multiple disks at different directory is not implemented.
 - Writing to i2 and i3 blocks of a file are not handled.
+- Double free corruption.
