@@ -14,9 +14,9 @@
   Passwords for them respectively: suser/buser<br/>
 
 ## How to use format to format a disk:
-  Run ./format <diskname> to get an empty disk.
+  Run ./format \<diskname\> to get an empty disk.
   - For example, "./format DISK" is going to give an empty disk named DISK.<br/>
-  Run ./formatdir <diskname>
+  Run ./formatdir \<diskname\>
   - For example, "./formatdir DISK" is going to give a disk with directory "/user/test.txt" named DISK<br/>
 
 ### ls:
