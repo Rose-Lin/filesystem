@@ -1069,6 +1069,7 @@ int f_read(void *buffer, int size, int n_times, int file_descriptor) {
 int find_next_datablock(inode* inode, int total_block, int old_fileoffest, int current_offset) {
     //total_block: including the one we are writing to
     //current_offset: not including the bytes we are writing
+    printf("%s\n", "in find next data_block");
     int idtotal = N_IBLOCKS * BLOCKSIZE / sizeof(int);
     int i2total = BLOCKSIZE * BLOCKSIZE / sizeof(int) / sizeof(int);
     int i3total = i2total * BLOCKSIZE / sizeof(int);
@@ -1076,7 +1077,7 @@ int find_next_datablock(inode* inode, int total_block, int old_fileoffest, int c
     int location = -1;
     if (current_offset >= old_fileoffest) {
         start_of_block_to_write = request_new_block();
-        // printf("requsted new_block: %d\n", start_of_block_to_write);
+        printf("requsted new_block: %d\n", start_of_block_to_write);
         if (total_block <= N_DBLOCKS) {
             location = DBLOCK;
         } else if (total_block - N_DBLOCKS <= idtotal) {
@@ -1087,10 +1088,11 @@ int find_next_datablock(inode* inode, int total_block, int old_fileoffest, int c
                 update_single_inode_ondisk(inode, inode->inode_index);
             }
         } else if (total_block - N_DBLOCKS - idtotal <= i2total) {
-            // printf("%s\n", "############going to i2 region##########");
             location = I2BLOCK;
+            return EXITFAILURE;
         } else if (total_block - N_DBLOCKS - idtotal - i2total <= i3total) {
             location = I3BLOCK;
+            return EXIT_FAILURE;
         }
         update_inodes_datablocks(location, total_block, inode, start_of_block_to_write);
         return start_of_block_to_write;
@@ -1658,13 +1660,13 @@ int request_new_block() {
     superblock *sp = current_mounted_disk->superblock1;
     int free_block = sp->free_block;
     void *prevfree_block_on_disk = get_data_block(free_block);
-    printf("%s\n", "request_new_block +++++");
+    // printf("%s\n", "request_new_block +++++");
     int next_free = ((block *) prevfree_block_on_disk)->next_free_block;
     sp->free_block = next_free;
     update_superblock_ondisk(sp);
-    printf("%s\n", "--------in req new block-----");
-    print_superblock(sp);
-    printf("%s\n", "----------end----------");
+    // printf("%s\n", "--------in req new block-----");
+    // print_superblock(sp);
+    // printf("%s\n", "----------end----------");
     free(prevfree_block_on_disk);
     return free_block;
 }
