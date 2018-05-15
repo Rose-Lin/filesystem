@@ -507,6 +507,10 @@ int f_write(void* buffer, int size, int ntimes, int fd ) {
                     total_block = file_table[fd]->byte_offset / BLOCKSIZE + 1;
                     start_of_block_to_write = find_next_datablock(file_table[fd]->file_inode, total_block, old_filesize,
                                                                   file_table[fd]->byte_offset);
+                    if(start_of_block_to_write == -1){
+                      printf("%s\n", "cannot write to i2 and i3");
+                      return EXITFAILURE;
+                    }
                     write_data_to_block(start_of_block_to_write, data, sp->size);
                 }
                 if (free_space < (ntimes * size)) {
@@ -538,6 +542,10 @@ int f_write(void* buffer, int size, int ntimes, int fd ) {
                 start_of_block_to_write = find_next_datablock(file_table[fd]->file_inode, total_block, old_filesize,
                                                               file_table[fd]->byte_offset);
                 printf("lefttowrite: %d\n", lefttowrite);
+                if(start_of_block_to_write == -1){
+                  printf("%s\n", "cannot write to i2 and i3");
+                  return EXITFAILURE;
+                }
                 int size_to_write = BLOCKSIZE;
                 void *data = malloc(BLOCKSIZE);
                 memset(data, 0, BLOCKSIZE);
