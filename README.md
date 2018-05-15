@@ -88,8 +88,8 @@
 - test cat
 #### file system functions:
 - test f_read
-- test f_write
-Writing to the file can be tested in test_open_dir.c, which writes data multiple times to DISKDIR.
+- test f_write<br/>
+Writing to the file can be tested in test_open_dir.c, which writes data multiple times to DISKDIR.<br/>
 - test f_mount
 - test f_unmount
 
