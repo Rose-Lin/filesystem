@@ -33,9 +33,9 @@
   -- Stays at the current working directory.<br/>
   cd ..<br/>
   -- Jumps to parent directory and changes the current working directory at the same time.<br/>
-  cd <absolute path><br/>
+  cd \<absolute path\><br/>
   -- Jumps to the right places and changes the current working directory at the same time.<br/>
-  cd <relative path><br/>
+  cd \<relative path\><br/>
   -- Jumps to the right places and changes the current working directory at the same time.<br/>
   cd<br/>
   -- Jumps to the root directory and changes the current working directory at the same time.<br/>
@@ -45,27 +45,27 @@
   -- Prints out the current working directory(absolute path). <br/>
 
 ### mkdir:
-  mkdir <relative path><br/>
-  -- mkdir <filename><br/>
+  mkdir \<relative path\><br/>
+  -- mkdir \<filename\><br/>
   -- Creates the directory at the right palce.<br/>
-  -- mkdir ./<filename><br/>
+  -- mkdir ./ \<filename\><br/>
   -- Creates the directory at the right palce.<br/>
-  -- mkdir ../<filename><br/>
+  -- mkdir ../ \<filename\><br/>
   -- Creates the directory at the right place.<br/>
-  mkdir <absolute path><br/>
+  mkdir \<absolute path\><br/>
   -- Creates the directory at the right palce.<br/>
 
 ### rm:
-  rm <relative path><br/>
+  rm \<relative path\><br/>
   -- Removes the file as desired. <br/>
-  rm <absolute path><br/>
+  rm \<absolute path\><br/>
   -- Removes the file as desired. <br/>
   *rm works on both empty directories and on empty files<br/>*
 
 ### rmdir:
-  rmdir <relative path><br/>
+  rmdir \<relative path\><br/>
   -- Recursively removes the directory as desired. <br/>
-  rmdir <absolute path><br/>
+  rmdir \<absolute path\><br/>
   -- Recursively removes the directory as desired. <br/>
 
 ### chmod:
